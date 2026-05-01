@@ -8,6 +8,7 @@ import type { SearchRequestFilter } from '@/shared/api/types/SearchRequest/Searc
 import { useFilterStore } from '@/shared/store/filterStore'
 
 import { useFilterData } from '../../hooks/useFilterData'
+import { ConfirmDialog } from './ConfirmDialog'
 
 interface FilterModalProps {
 	isOpen: boolean
@@ -41,6 +42,10 @@ export const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
 	const appliedFilters = useFilterStore(state => state.appliedFilters)
 	const setAppliedFilters = useFilterStore(state => state.setAppliedFilters)
 	const [selection, setSelection] = useState<SelectionState>({})
+	const [isConfirmOpen, setIsConfirmOpen] = useState(false)
+	const [pendingSelection, setPendingSelection] = useState<SearchRequestFilter>(
+		[]
+	)
 
 	useEffect(() => {
 		if (isOpen) {
@@ -69,11 +74,22 @@ export const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
 	}
 
 	const handleApply = () => {
-		setAppliedFilters(toSearchRequestFilters(selection))
+		setPendingSelection(toSearchRequestFilters(selection))
+		setIsConfirmOpen(true)
 	}
 
 	const handleClearAll = () => {
 		setSelection({})
+	}
+
+	const handleConfirm = () => {
+		setAppliedFilters(pendingSelection)
+		setIsConfirmOpen(false)
+		onClose()
+	}
+
+	const handleCancelConfirm = () => {
+		setIsConfirmOpen(false)
 	}
 
 	return (
@@ -171,6 +187,14 @@ export const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
 					</button>
 				</footer>
 			</div>
+			<ConfirmDialog
+				cancelLabel={t('confirmDecline')}
+				confirmLabel={t('confirmAccept')}
+				isOpen={isConfirmOpen}
+				onCancel={handleCancelConfirm}
+				onConfirm={handleConfirm}
+				title={t('confirmTitle')}
+			/>
 		</div>
 	)
 }
