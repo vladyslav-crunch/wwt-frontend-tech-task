@@ -1,3 +1,11 @@
 {
-	"clear_all_parameters": "Clear all parameters"
+	"applyFilters": "Apply",
+	"currentFilters": "Current filters",
+	"filtersTitle": "Filters",
+	"openFilterModal": "Open filters",
+	"pageTitle": "WinWinTravel frontend test task",
+	"clearAllFilters": "Clear all parameters",
+	"confirmFiltersDecline": "Use old filters",
+	"confirmFiltersAccept": "Apply new filters",
+	"confirmFiltersTitle": "Do you want to apply new filters?"
 }
