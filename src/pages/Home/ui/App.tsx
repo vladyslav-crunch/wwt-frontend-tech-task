@@ -12,15 +12,13 @@ export const App = () => {
 
 	return (
 		<section className="w-full h-dvh flex items-center justify-center flex-col gap-6">
-			<h1 className="text-6xl text-gray-600 ">
-				{t('winwintravel_frontend_test_task')}
-			</h1>
+			<h1 className="text-6xl text-gray-600 ">{t('pageTitle')}</h1>
 
 			<button
 				className="px-3 py-3 bg-slate-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
 				onClick={() => setIsModalOpen(true)}
 			>
-				{t('OpenFilterModal')}
+				{t('openFilterModal')}
 			</button>
 			<FilterModal
 				isOpen={isModalOpen}

@@ -113,7 +113,7 @@ export const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
 					</button>
 				</header>
 
-				<div className="mt-2 flex flex-col gap-3">
+				<div className="flex flex-col ">
 					{isLoading && (
 						<p className="rounded-2xl bg-slate-50 px-4 py-3 text-sm text-slate-500">
 							{t('loading')}
@@ -168,32 +168,33 @@ export const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
 					))}
 				</div>
 
-				<footer className="relative flex w-full items-center justify-center p-6">
+				<footer className="relative flex w-full flex-col items-center gap-4 py-6 sm:flex-row sm:justify-center">
 					<button
-						className="absolute right-0 text-sm font-semibold text-[#078691] transition hover:text-slate-800"
+						className="text-sm font-semibold text-[#078691] transition hover:text-slate-800 sm:absolute sm:right-0 sm:top-1/2 sm:-translate-y-1/2"
 						disabled={isLoading}
 						onClick={handleClearAll}
 						type="button"
 					>
-						<u>{t('clear_all_parameters')}</u>
+						<u>{t('clearAllFilters')}</u>
 					</button>
+
 					<button
 						className="w-full max-w-[220px] rounded-2xl bg-[#ff5a00] py-5 text-sm font-bold text-white transition hover:bg-[#e65100] disabled:opacity-50"
 						disabled={isLoading}
 						onClick={handleApply}
 						type="button"
 					>
-						{t('apply')}
+						{t('applyFilters')}
 					</button>
 				</footer>
 			</div>
 			<ConfirmDialog
-				cancelLabel={t('confirmDecline')}
-				confirmLabel={t('confirmAccept')}
+				cancelLabel={t('confirmFiltersDecline')}
+				confirmLabel={t('confirmFiltersAccept')}
 				isOpen={isConfirmOpen}
 				onCancel={handleCancelConfirm}
 				onConfirm={handleConfirm}
-				title={t('confirmTitle')}
+				title={t('confirmFiltersTitle')}
 			/>
 		</div>
 	)
