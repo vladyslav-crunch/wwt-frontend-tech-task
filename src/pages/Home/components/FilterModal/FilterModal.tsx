@@ -66,7 +66,7 @@ export const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
 	}
 
 	return (
-		<div className="fixed inset-0 z-40 flex items-center justify-center overflow-y-auto bg-slate-900/40 px-4 py-10">
+		<div className="fixed inset-0 z-40 flex items-start justify-center overflow-y-auto bg-slate-900/40 px-4 py-10">
 			<div
 				aria-modal="true"
 				className="relative w-full max-w-4xl rounded-2xl bg-white p-4 px-[32px] shadow-2xl"
