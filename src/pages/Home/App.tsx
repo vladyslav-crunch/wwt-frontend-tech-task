@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { useFilterStore } from '@/shared/store/filterStore'
 
-import { FilterModal } from './components/FilterModal'
+import { FilterModal } from './components/FilterModal/FilterModal'
 
 export const App = () => {
 	const { t } = useTranslation('filter')
